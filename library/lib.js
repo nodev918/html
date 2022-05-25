@@ -1,5 +1,5 @@
-function select(target) {
-  return document.querySelector(target);
+function select(dom) {
+  return dom;
 }
 
 function div(content) {
@@ -27,12 +27,27 @@ async function fetc(url, type) {
     .then((data) => console.log(data));
 }
 
+function setStyle(dom, attr) {
+  console.log(dom);
+  console.log(attr);
+  Object.keys(attr).forEach((name) => {
+    console.log("name: ", name);
+    dom[name] = attr[name];
+  });
+}
+
+function putBlank() {
+  return create("br", "", {});
+}
+
 window.op = {
   select,
   cat,
   fetc,
   box,
   div,
+  setStyle,
+  putBlank,
 };
 
 function create(type, content, attr) {
@@ -44,12 +59,12 @@ function create(type, content, attr) {
   return d;
 }
 
-function read(selector) {
-  console.log(document.querySelector(selector));
+function read(dom) {
+  console.log(dom);
 }
 
-function update(target, value) {
-  return (document.querySelector(target).innerHTML = value);
+function update(dom, value) {
+  return (dom.innerHTML = value);
 }
 
 function deletee(target) {
